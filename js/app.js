@@ -4,6 +4,7 @@ const usuariosRegistrados = [
   { usuario: 'usuario3', contraseña: 'contraseña3', saldo: 200}
 ];
 
+
 function iniciarSesion(usuario, contraseña) {
   for (const user of usuariosRegistrados) {
     if (user.usuario === usuario && user.contraseña === contraseña) {
@@ -21,7 +22,7 @@ function iniciarSesionYRedireccionar() {
   if (resultadoInicioSesion !== null) {
     const { saldo, nombre } = resultadoInicioSesion;
     console.log(`Inicio de sesión exitoso para ${nombre}. Saldo actual: $${saldo}`);
-    window.location.href = 'segura.html'; 
+    window.location.href = './segura.html'; 
   } else {
     console.log('Inicio de sesión fallido. Verifica tus credenciales.');
   }
