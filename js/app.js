@@ -1,29 +1,36 @@
 const usuariosRegistrados = [
-  { usuario: 'usuario1', contraseña: 'contraseña1', saldo: 1000 },
-  { usuario: 'usuario2', contraseña: 'contraseña2', saldo: 500 },
-  { usuario: 'usuario3', contraseña: 'contraseña3', saldo: 200}
-];
+  { usuario: 'Juan', contraseña: 'contraseña1', saldo: 1000 },
+  { usuario: 'Pedro', contraseña: 'contraseña2', saldo: 500 },
+  { usuario: 'Miguel', contraseña: 'contraseña3', saldo: 200}
+]; //Declaración de arreglo de usuarios registrados
 
 
 function iniciarSesion(usuario, contraseña) {
   for (const user of usuariosRegistrados) {
     if (user.usuario === usuario && user.contraseña === contraseña) {
-      return { saldo: user.saldo, nombre: user.nombre }; // Retorna saldo y nombre del usuario si las credenciales son correctas
+      return { saldo: user.saldo, nombre: user.usuario }; // Retorna saldo y nombre del usuario si las credenciales son correctas
     }
   }
   return null; // Retorna null si las credenciales son incorrectas
-}
+} // Función para iniciar sesión con usuario y contraseña como parámetros de entrada y retorna saldo y 
+//nombre del usuario si las credenciales son correctas, de lo contrario retorna null
 
-function iniciarSesionYRedireccionar() {
+
+function iniciarSesionYMostrarInfo() {
   const usuario = document.getElementById('UserInput').value; 
   const contraseña = document.getElementById('PaswordInput').value; 
   const resultadoInicioSesion = iniciarSesion(usuario, contraseña);
+  const resultadoElemento = document.getElementById('resultado');
+  const saldoInfoElemento = document.getElementById('saldo-info');
 
   if (resultadoInicioSesion !== null) {
     const { saldo, nombre } = resultadoInicioSesion;
-    console.log(`Inicio de sesión exitoso para ${nombre}. Saldo actual: $${saldo}`);
-    window.location.href = './segura.html'; 
+    resultadoElemento.innerText = `Bienvenido ${nombre}`;
+    saldoInfoElemento.innerText = `Tu saldo es de ${saldo} pesos`;  
+    
   } else {
-    console.log('Inicio de sesión fallido. Verifica tus credenciales.');
+    alert('Inicio de sesión fallido. Verifica tus credenciales.');
   }
 }
+
+
