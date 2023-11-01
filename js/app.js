@@ -1,3 +1,4 @@
+
 const usuariosRegistrados = [
   { usuario: 'Juan', contraseña: 'contraseña1', saldo: 1000 },
   { usuario: 'Pedro', contraseña: 'contraseña2', saldo: 500 },
@@ -16,18 +17,20 @@ function iniciarSesion(usuario, contraseña) {
 //nombre del usuario si las credenciales son correctas, de lo contrario retorna null
 
 
-function iniciarSesionYMostrarInfo() {
-  const usuario = document.getElementById('UserInput').value; 
-  const contraseña = document.getElementById('PaswordInput').value; 
+function iniciarSesionYMostrarInfo(event) {
+  event.preventDefault(); // Evita que la página se recargue cuando se envía el formulario
+
+  const usuario = document.getElementById('UserInput').value;
+  const contraseña = document.getElementById('PaswordInput').value;
+
   const resultadoInicioSesion = iniciarSesion(usuario, contraseña);
-  const resultadoElemento = document.getElementById('resultado');
-  const saldoInfoElemento = document.getElementById('saldo-info');
 
   if (resultadoInicioSesion !== null) {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('infoCuenta').style.display = 'flex !important'; // Muestra el div 'infoCuenta'
     const { saldo, nombre } = resultadoInicioSesion;
-    resultadoElemento.innerText = `Bienvenido ${nombre}`;
-    saldoInfoElemento.innerText = `Tu saldo es de ${saldo} pesos`;  
-    
+    document.getElementById('nombreUsuario').innerText = `Bienvenido ${nombre}`;
+    document.getElementById('saldoUsuario').innerText = `Tu saldo es de ${saldo} pesos`;
   } else {
     alert('Inicio de sesión fallido. Verifica tus credenciales.');
   }

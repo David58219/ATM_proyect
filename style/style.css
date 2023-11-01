@@ -10,3 +10,25 @@ label {
     margin-left: 1rem;
     opacity: 0.8;
 }
+#infoCuenta {
+    display: none;
+}
+
+#usuarioCuentaInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+}
+
+#usuarioCuentaInfo h2 {
+    background-color: #398c9ded;
+    width: 18rem;
+}
+.botones_info {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 1rem;
+    
+}
